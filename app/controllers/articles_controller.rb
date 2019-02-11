@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_filter :authenticate_request!
+
   def new
     @article = Article.new
   end

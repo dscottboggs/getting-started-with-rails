@@ -64,4 +64,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # bulma CSS framework
 gem "bulma-rails", "~> 0.7.4"
 
+# Redcarpet handles markdown -> HTML parsing.
 gem 'redcarpet', '~> 3.0.0'
+
+# devise is an authentication middleware
+gem 'devise'
+
+# JWT for authentication
+gem 'jwt'
