@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsBlog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="columns">
+        <div class="column is-one-quarter"></div>
+        <div class="column">
+          <%= yield %>
+        </div>
+        <div class="column is-one-quarter"></div>
+      </div>
+    </section>
+  </body>
+</html>
