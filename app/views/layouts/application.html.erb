@@ -9,14 +9,36 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="has-navbar-fixed-bottom">
+    <div class="navbar is-fixed-bottom is-dark">
+      <div class="navbar-brand">
+        <a href="/" class="navbar-item">Getting Started with Rails</a>
+        <div class="navbar-burger burger" id="main-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="navbar-menu" id="main-navbar">
+        <div class="navbar-start">
+          <%= link_to 'The blog', articles_path, class: "navbar-item"%>
+          <a href="https://github.com/dscottboggs/" target="_blank" class="navbar-item">My Github</a>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a href="#" class="button is-primary">Sign in</a>
+              <a href="#" class="button is-dark">Request Access</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <section class="section">
       <div class="columns">
-        <div class="column is-one-quarter"></div>
-        <div class="column">
+        <div class="column is-half is-offset-one-quarter">
           <%= yield %>
         </div>
-        <div class="column is-one-quarter"></div>
       </div>
     </section>
   </body>
