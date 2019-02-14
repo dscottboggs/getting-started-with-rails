@@ -8,6 +8,10 @@ function addDeleteListener(msg) {
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function flashDeleteListeners() {
   document.querySelectorAll('.flash-message').forEach(addDeleteListener)
-})
+}
+
+document.addEventListener('DOMContentLoaded', flashDeleteListeners)
+
+document.addEventListener('turbolinks:load', flashDeleteListeners)
