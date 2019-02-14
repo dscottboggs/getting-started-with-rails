@@ -1,0 +1,10 @@
+<div class="section">
+  <h1 class="title">All Users</h1>
+  <% if @users %>
+    <% @users.each do |user| %>
+      <%= link_to user, class: 'button' %>
+    <% end %>
+  <% else %>
+    <h4 class=subtitle>(none found)</h4>
+  <% end %>
+</div>

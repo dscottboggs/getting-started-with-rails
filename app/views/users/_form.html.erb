@@ -1,0 +1,14 @@
+<%= form_with model: @user, local: true do |form| %>
+  <%= render partial: "errors", locals: {model: @user} %>
+  <p>
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "input" %>
+  </p>
+  <p>
+    <%= form.label :password %>
+    <%= form.text_field :password, class: "input", type: "password" %>
+  </p>
+  <%= yield form %>
+  <br/>
+  <p><%= form.submit "Submit", class: "button is-primary" %></p>
+<% end %>

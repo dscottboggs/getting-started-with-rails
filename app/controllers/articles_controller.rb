@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+
+  before_action :authenticate!, except: [ :show, :index ]
+
   def new
     @article = Article.new
   end

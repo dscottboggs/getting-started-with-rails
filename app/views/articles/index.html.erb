@@ -1,6 +1,8 @@
 <div class="level">
   <h1 class="title level-left">Tha demo blog!</h1>
-  <%= link_to 'New Article', new_article_path, class: 'button is-primary level-right' %>
+  <% if logged_in? %>
+    <%= link_to 'New Article', new_article_path, class: 'button is-primary level-right' %>
+  <% end %>
 </div>
 
 <% @articles.each do |article| %>
@@ -12,15 +14,17 @@
       <p class="card-content" style="color: hsl(0, 0%, 71%);">
         <%= summarize article.text %>
       </p>
-      <ul class="card-footer">
-        <li class="card-footer-item"><%= link_to 'Edit', edit_article_path(article) %></li>
-        <li class="card-footer-item">
-          <%= link_to 'Destroy',
-                      article_path(article),
-                      method: :delete,
-                      data: { confirm: "For sure?" }%>
-        </li>
-      </ul>
+      <% if logged_in? %>
+        <ul class="card-footer">
+          <li class="card-footer-item"><%= link_to 'Edit', edit_article_path(article) %></li>
+          <li class="card-footer-item">
+            <%= link_to 'Destroy',
+                        article_path(article),
+                        method: :delete,
+                        data: { confirm: "For sure?" }%>
+          </li>
+        </ul>
+      <% end %>
     </div>
   </a>
   <br/><br/>

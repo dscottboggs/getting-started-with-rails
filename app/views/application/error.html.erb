@@ -1,0 +1,14 @@
+<div class="section">
+  <h1 class="title">
+    Error<%= @error_status ? " code @error_status" : '!' %>
+  </h1>
+  <div class="content">
+    <% if @forrmatting == :markdown %>
+      <%= raw markdown @error_message %>
+    <% elsif @forrmatting == :html %>
+      <%= raw @error_message %>
+    <% else %>
+      <%= @error_message %>
+    <% end %>
+  </div>
+</div>

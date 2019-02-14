@@ -1,17 +1,5 @@
 <%= form_with model: @article, local: true do |form| %>
-  <% if @article and @article.errors.any? %>
-    <div>
-      <h2 class="subtitle">
-        <%= pluralize @article.errors, 'error' %> prevented this article from being saved:
-      </h2>
-      <% @article.errors.each do |msg| %>
-        <div class="notification is-danger">
-          <button class="delete" />
-          <%= msg %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render partial: "errors", locals: { model: @article } %>
   <p>
     <%= form.label :title %>
     <%= form.text_field :title, class: "input"%>

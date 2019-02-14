@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   resources :articles
 
+  get "sign_in" => "users#new"
+  get "sign_out" => "users#destroy"
+  resources :users
+
   root 'welcome#index'
 end

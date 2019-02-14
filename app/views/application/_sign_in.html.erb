@@ -1,0 +1,14 @@
+
+<% if auth_present? && logged_in? %>
+  <div class="navbar-item">Welcome <%= current_user.name %></div>
+  <div class="navbar-item">
+    <%= link_to  "Sign out", sign_out_path, class: "button is-danger" %>
+  </div>
+<% else %>
+  <div class="navbar-item">
+    <div class="buttons">
+      <%= link_to  "Sign In", sign_in_path, class: "button is-primary" %>
+      <a href="#" class="button is-dark" onclick="alert('not yet implemented!');">Request Access</a>
+    </div>
+  </div>
+<% end %>

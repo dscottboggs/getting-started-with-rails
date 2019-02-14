@@ -14,6 +14,18 @@
  *= require_self
  */
 
+$flash-offset: 10%;
+
+.flash-message {
+  position: absolute;
+  top: $flash-offset;
+  right: $flash-offset;
+  max-width: 25%;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.33s;
+}
+
  // color defns (default values)
 $grey-darker: hsl(0, 0%, 21%);
 $grey-dark: hsl(0, 0%, 29%);
@@ -34,8 +46,10 @@ $text-strong: $grey-lighter;
 $text-invert: hsl(348, 100%, 61%);
 $text-light: $grey-light;
 $title-color: $text-strong;
+$subtitle-color: $text;
+$subtitle-strong-color: $text-strong;
 $link: hsl(210, 86%, 67%);
-$link-hover: $grey-light;
+$link-hover: inherit;
 $link-hover-border: $grey-darker;
 $link-active: $grey-lighter;
 $link-active-border: $grey-light;

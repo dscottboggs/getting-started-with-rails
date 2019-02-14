@@ -69,3 +69,6 @@ gem 'redcarpet', '~> 3.0.0'
 
 # bcrypt for passwords
 gem 'bcrypt'
+
+# JSON web tokens for storing auth state
+gem 'jwt'

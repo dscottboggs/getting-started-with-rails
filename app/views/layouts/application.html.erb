@@ -9,11 +9,28 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="has-navbar-fixed-bottom">
-    <div class="navbar is-fixed-bottom is-dark">
+  <body>
+    <%# "flash" session messages presented as dismissable bulma notifications %>
+    <% if flash[:alert] %>
+      <div class="notification is-danger flash-message" style="position: absolute">
+        <div class="delete" ></div>
+        <%= flash.alert %>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="notification is-info flash-message" style="position: absolute">
+        <div class="delete" ></div>
+        <%= flash.notice %>
+      </div>
+    <% end %>
+
+    <div class="navbar is-fixed-top is-dark">
       <div class="navbar-brand">
         <a href="/" class="navbar-item">Getting Started with Rails</a>
         <div class="navbar-burger burger" id="main-burger">
+          <%# the burger has to have three spans inside to in order to actually 
+          make the burger icon, since bulma is pure-css and doesn't use any JS.
+          ¯\_(ツ)_/¯  %>
           <span></span>
           <span></span>
           <span></span>
@@ -25,12 +42,7 @@
           <a href="https://github.com/dscottboggs/" target="_blank" class="navbar-item">My Github</a>
         </div>
         <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <a href="#" class="button is-primary">Sign in</a>
-              <a href="#" class="button is-dark">Request Access</a>
-            </div>
-          </div>
+          <%= render partial: "sign_in" %>
         </div>
       </div>
     </div>
