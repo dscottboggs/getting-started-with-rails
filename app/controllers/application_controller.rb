@@ -2,10 +2,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :logged_in?, :current_user, :auth_present?
 
-  def render_error(message, status, formatting=:markdown)
+  def render_error(message, status, previous_url=nil, formatting=:markdown)
     @error_message = message if message
+    @error_previous_url = previous_url if previous_url
     @error_status = status
-    @formatting = formatting
+    @error_formatting = formatting
     if status
       render 'error', status: status
     else
@@ -30,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    render status: 401 unless logged_in?
+    render_error "***Unauthorized.***", 401 unless logged_in?
   end
 
   private

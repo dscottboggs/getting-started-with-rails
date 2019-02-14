@@ -1,14 +1,18 @@
 <div class="section">
   <h1 class="title">
-    Error<%= @error_status ? " code @error_status" : '!' %>
+    Error<%= @error_status ? " code #{@error_status}" : '!' %>
   </h1>
   <div class="content">
-    <% if @forrmatting == :markdown %>
+    <% case @error_formatting %>
+    <% when :markdown %>
       <%= raw markdown @error_message %>
-    <% elsif @forrmatting == :html %>
+    <% when :html %>
       <%= raw @error_message %>
     <% else %>
       <%= @error_message %>
     <% end %>
   </div>
+  <% if url = @error_previous_url %>
+    <a class=button href="<% url %>">Go back?</a>
+  <% end %>
 </div>
