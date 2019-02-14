@@ -43,6 +43,8 @@ class ArticlesController < ApplicationController
   private
 
   def from_article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text).tap do |params|
+      params[:author] = current_user
+    end
   end
 end

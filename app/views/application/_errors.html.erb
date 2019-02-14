@@ -1,8 +1,8 @@
 <% if model && model.errors.any? %>
   <% model.errors.each do |msg| %>
-    <div class="notification is-danger flash-message">
+    <div class="notification is-danger flash-message" style="position: absolute">
       <%= msg %>
-      <div class="button delete"></div>
+      <div class="delete"></div>
     </div>
   <% end %>
 <% end %>

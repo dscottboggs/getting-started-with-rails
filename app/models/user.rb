@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :articles, foreign_key: :author
   has_secure_password
 
   EXPIRY_DELAY = 60 * 60 * 24 * 30
