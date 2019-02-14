@@ -14,7 +14,7 @@
       <p class="card-content" style="color: hsl(0, 0%, 71%);">
         <%= summarize article.text %>
       </p>
-      <% if logged_in? %>
+      <% if auth_present? && logged_in? && article.author == current_user %>
         <ul class="card-footer">
           <li class="card-footer-item"><%= link_to 'Edit', edit_article_path(article) %></li>
           <li class="card-footer-item">

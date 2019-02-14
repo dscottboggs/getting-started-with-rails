@@ -6,8 +6,10 @@
   <% if auth_present? && logged_in? %>
     <div class="buttons are-small column">
       <%= link_to 'Back', articles_path, class: "button is-warning" %>
-      <%= link_to 'Edit', edit_article_path, class: "button is-primary" %>
-      <%= link_to 'Destroy', article_path, method: :delete, data: { confirm: "For sure?" }, class: "button is-danger" %>
+      <% if @article.author == current_user %>
+        <%= link_to 'Edit', edit_article_path, class: "button is-primary" %>
+        <%= link_to 'Destroy', article_path, method: :delete, data: { confirm: "For sure?" }, class: "button is-danger" %>
+      <% end %>
     </div>
   <% end %>
 </div>
