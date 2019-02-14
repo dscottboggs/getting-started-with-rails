@@ -1,8 +1,10 @@
 
 <% if auth_present? && logged_in? %>
-  <div class="navbar-item">Welcome <%= current_user.name %></div>
-  <div class="navbar-item">
-    <%= link_to  "Sign out", sign_out_path, class: "button is-danger" %>
+  <div class=level>
+    <div class="level-left navbar-item">Welcome, <%= current_user.name %></div>
+    <div class="level-right navbar-item">
+      <%= link_to  "Sign out", sign_out_path, class: "button is-danger" %>
+    </div>
   </div>
 <% else %>
   <div class="navbar-item">
