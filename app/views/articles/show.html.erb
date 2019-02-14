@@ -3,11 +3,13 @@
   <h1 class="column is-three-quarters title">
     <%= @article.title %>
   </h1>
-  <div class="buttons are-small column">
-    <%= link_to 'Back', articles_path, class: "button is-warning" %>
-    <%= link_to 'Edit', edit_article_path, class: "button is-primary" %>
-    <%= link_to 'Destroy', article_path, method: :delete, data: { confirm: "For sure?" }, class: "button is-danger" %>
-  </div>
+  <% if auth_present? && logged_in? %>
+    <div class="buttons are-small column">
+      <%= link_to 'Back', articles_path, class: "button is-warning" %>
+      <%= link_to 'Edit', edit_article_path, class: "button is-primary" %>
+      <%= link_to 'Destroy', article_path, method: :delete, data: { confirm: "For sure?" }, class: "button is-danger" %>
+    </div>
+  <% end %>
 </div>
 
   <div class="content"><%= raw markdown @article.text %></div>

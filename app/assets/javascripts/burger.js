@@ -8,4 +8,8 @@ function addBurgerListeners() {
 }
 
 document.addEventListener('turbolinks:load', addBurgerListeners)
-document.addEventListener('DOMContentLoaded', addBurgerListeners)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', addBurgerListeners)
+} else {
+  addBurgerListeners()
+}

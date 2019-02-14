@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find params[:id]
-    if @article.update params.require(:article).permit(:title, :text)
+    if @article.update edit_article_params @article.author
       redirect_to @article
     else
       render 'edit'
@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new from_article_params
+    @article = Article.new new_article_params
     if @article.save
       redirect_to @article
     else
@@ -42,9 +42,15 @@ class ArticlesController < ApplicationController
 
   private
 
-  def from_article_params
-    params.require(:article).permit(:title, :text).tap do |params|
-      params[:author] = current_user
-    end
+  def article_form_params
+    params.require(:article).permit(:title, :text)
+  end
+
+  def edit_article_params(author)
+    article_form_params.tap { |p| p[:author] = author }
+  end
+
+  def new_article_params
+    article_form_params.tap { |params| params[:author] = current_user }
   end
 end
