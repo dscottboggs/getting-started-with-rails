@@ -72,3 +72,6 @@ gem 'bcrypt'
 
 # JSON web tokens for storing auth state
 gem 'jwt'
+
+# Carrierwave handles file uploads
+gem 'carrierwave'

@@ -8,25 +8,26 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert tc.password == nil
   end
   test "create" do
-    post "/users", params: test_user_params
-    assert session['token']
+    post "/users", params: {user: test_user_params}
+    assert_equal test_user.name, Auth.decode(session['token'])['user']
+    assert_redirected_to test_user
   end
 
   test "show" do
-    tc = UsersController.new
-    # This doesn't work: #session is delegated to @_request
-    # in controllers, which is nil in Unit tests: Must use
-    # integration tests
-    # 
-    # tc.session[:token] = test_user.session_token
-    # user = tc.show
-    # assert test_user.name == user.name
+    post '/users', params: {user: test_user_params}
+    follow_redirect!
+    assert_response :success
+    assert_equal "/users/#{test_user.id}", path
   end
 
   private
 
   def test_user
     users :one
+  end
+
+  def sign_in
+
   end
 
   def test_user_params
